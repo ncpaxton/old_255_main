@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: joslateriii
+---
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: joslateriii-full-access
+  namespace: joslateriii
+rules:
+- apiGroups: ["", "extensions", "apps"]
+  resources: ["*"]
+  verbs: ["*"]
+- apiGroups: ["batch"]
+  resources:
+  - jobs
+  - cronjobs
+  verbs: ["*"]
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: joslateriii-user-access
+  namespace: joslateriii
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: joslateriii-full-access
+subjects:
+- kind: User
+  namespace: joslateriii
+  name: 36318b63-4adb-448c-8625-ce242612a90f
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: resource-quota-joslateriii
+  namespace: joslateriii
+spec:
+  hard:
+    requests.cpu: "4"
+    requests.memory: 8Gi
+    limits.cpu: "8"
+    limits.memory: 16Gi

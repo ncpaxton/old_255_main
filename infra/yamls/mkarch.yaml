@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: mkarch
+---
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: mkarch-full-access
+  namespace: mkarch
+rules:
+- apiGroups: ["", "extensions", "apps"]
+  resources: ["*"]
+  verbs: ["*"]
+- apiGroups: ["batch"]
+  resources:
+  - jobs
+  - cronjobs
+  verbs: ["*"]
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: mkarch-user-access
+  namespace: mkarch
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: mkarch-full-access
+subjects:
+- kind: User
+  namespace: mkarch
+  name: 8ab59dba-581d-4990-9aed-4c7ee4e14ad7
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: resource-quota-mkarch
+  namespace: mkarch
+spec:
+  hard:
+    requests.cpu: "4"
+    requests.memory: 8Gi
+    limits.cpu: "8"
+    limits.memory: 16Gi
