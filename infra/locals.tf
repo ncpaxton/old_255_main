@@ -15,7 +15,7 @@ locals {
     "john.slater@berkeley.edu",
     "mblake@berkeley.edu",
     "v.killada@berkeley.edu",
-    "ziff@berkeley.edu ",
+    "ziff@berkeley.edu",
     "sudhrity@berkeley.edu",
     "jdayer@berkeley.edu",
     "pmotameni@berkeley.edu",
