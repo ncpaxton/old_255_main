@@ -65,6 +65,14 @@ Grades will be given based on the following:
 2. Ability to build, run, and test application using `test_setup_and_curl.sh`
 3. Ability to test the code with `poetry run pytest`
 
+### Rubric
+
+- Functional API: 3 points
+- Docker Practices: 2 points
+- Happy Path Testing: 2 points
+- Failure Testing: 1 point
+- Correct HTTP Status Codes: 2 points
+
 ## Time Expectations
 
 - Background with Docker, API Development, Poetry, Git, Bash, etc.
