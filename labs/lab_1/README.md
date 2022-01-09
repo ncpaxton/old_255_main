@@ -20,9 +20,37 @@ You do not need to manage pull requests, etc. Instructors and TAs will pull down
 
 ## Helpful Information
 
+### .gitignore
+
+Add a `.gitignore` file to the root of your repo with the following:
+
+https://github.com/github/gitignore/blob/main/Python.gitignore
+
 ### Project Setup
 
 `poetry new lab1` will make your life a lot easier
+
+This will change your folder structure to the following:
+
+```{text}
+.
+└── lab_1
+   └── lab1
+      ├── README.rst
+      ├── lab1
+      │   ├── __init__.py
+      │   └── main.py
+      ├── poetry.lock
+      ├── pyproject.toml
+      └── tests
+         ├── __init__.py
+         └── test_lab1.py
+└── lab_2
+└── lab_3
+└── lab_4
+└── lab_5
+└── project
+```
 
 ### Running commands from the poetry virtual environment
 
@@ -77,14 +105,49 @@ Build a `FastAPI` with the following:
 6. API is hosted on port `8000`
 7. Testing scripts are in the parent directory of your application
    - Recommendation to run `poetry new lab1` from the directory with the scripts
-8. `student_setup.sh` is edited with any docker build, run, etc. commands required to run your application.
+8. Create a `run.sh` file in the `lab1` root that will do the following:
+      - Build docker container
+      - Run docker container in detached mode `-d` so that script can continue
+      - curl defined endpoints and return status codes (examples below):
+
+        ```{bash}
+         curl -o /dev/null -s -w "%{http_code}\n" -X GET "http://localhost:8000/hello?name=Winegar"
+         curl -o /dev/null -s -w "%{http_code}\n" -X GET "http://localhost:8000/"
+         curl -o /dev/null -s -w "%{http_code}\n" -X GET "http://localhost:8000/docs"
+        ```
+
+## Expected Final Folder Structure
+
+```{text}
+.
+└── .gitignore
+└── lab_1
+   └── run.sh
+   └── README.md
+   └── Dockerfile
+   └── lab1
+      ├── README.rst
+      ├── lab1
+      │   ├── __init__.py
+      │   └── main.py
+      ├── poetry.lock
+      ├── pyproject.toml
+      └── tests
+         ├── __init__.py
+         └── test_lab1.py
+└── lab_2
+└── lab_3
+└── lab_4
+└── lab_5
+└── project
+```
 
 ## Grading
 
 Grades will be given based on the following:
 
 1. Adhesion to requirements
-2. Ability to build, run, and test application using `test_setup_and_curl.sh`
+2. Ability to build and run application using `run.sh`
 3. Ability to test the code with `poetry run pytest`
 
 ### Rubric
