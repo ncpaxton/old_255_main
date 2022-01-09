@@ -52,7 +52,7 @@ Build a `FastAPI` with the following:
    1. Test failure scenerios for the code
       - [FastAPI Testing Tutorial](https://fastapi.tiangolo.com/tutorial/testing/)
 3. Use `poetry` for creating environment
-   - [Installing Poetry](https://python-poetry.org/docs/)
+   - [Installing Poetry](https://python-poetry.org/docs/master/#installing-with-the-official-installer)
    - [Basic Usage of Poetry](https://python-poetry.org/docs/basic-usage/)
 4. `Dockerfile` uses multi-stage builds to reduce image sizes
    - [Example Using Poetry](https://gabnotes.org/lighten-your-python-image-docker-multi-stage-builds/)
