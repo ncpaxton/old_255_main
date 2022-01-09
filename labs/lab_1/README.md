@@ -2,6 +2,22 @@
 
 The goal of Lab 1 is to familiarize students with preparing their environment for the rest of the class. During this lab we will create a simple `FastAPI` application. This API will be containerized, tested, and allow for you to develop locally quickly.
 
+## Working Repository
+
+You should have a repo in [GitHub](https://github.com/orgs/UCB-W255/) with a name following the following standard `[TERM][YEAR]-[GITHUB_USERNAME]`. For example: https://github.com/UCB-W255/spring22-jameswinegar. All work for all labs and project should be done in this repository with the following folder structure:
+
+```{text}
+.
+└── lab_1
+└── lab_2
+└── lab_3
+└── lab_4
+└── lab_5
+└── project
+```
+
+You do not need to manage pull requests, etc. Instructors and TAs will pull down code when they go to grade. Submission timelines are on the honor system, but we will be grading quickly to provide meaningful feedback.
+
 ## Helpful Information
 
 ### Project Setup
