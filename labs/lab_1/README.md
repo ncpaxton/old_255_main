@@ -49,6 +49,12 @@ Build a `FastAPI` with the following:
 
 ## Helpful Information
 
+### Project Setup
+
+`poetry new lab1` will make your life a lot easier
+
+### Running commands from the poetry virtual environment
+
 `poetry` allows you to run scripts directly from it's environment in a controlled fashion. For example I have `conda` installed on my machine and it is the default `python`. When leveraging `poetry` to run `FastAPI` applications I typically do the following for local development:
 
 ```{bash}
@@ -56,6 +62,8 @@ poetry run uvicorn main:app --reload
 ```
 
 this will run the uvicorn application within the context of the virtual environment created by poetry without having to source the environment.
+
+
 
 ## Grading
 
