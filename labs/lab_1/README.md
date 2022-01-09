@@ -2,6 +2,22 @@
 
 The goal of Lab 1 is to familiarize students with preparing their environment for the rest of the class. During this lab we will create a simple `FastAPI` application. This API will be containerized, tested, and allow for you to develop locally quickly.
 
+## Helpful Information
+
+### Project Setup
+
+`poetry new lab1` will make your life a lot easier
+
+### Running commands from the poetry virtual environment
+
+`poetry` allows you to run scripts directly from it's environment in a controlled fashion. For example I have `conda` installed on my machine and it is the default `python`. When leveraging `poetry` to run `FastAPI` applications I typically do the following for local development:
+
+```{bash}
+poetry run uvicorn main:app --reload
+```
+
+this will run the uvicorn application within the context of the virtual environment created by poetry without having to source the environment.
+
 ## Objective
 
 Build a `FastAPI` with the following:
@@ -46,24 +62,6 @@ Build a `FastAPI` with the following:
 7. Testing scripts are in the parent directory of your application
    - Recommendation to run `poetry new lab1` from the directory with the scripts
 8. `student_setup.sh` is edited with any docker build, run, etc. commands required to run your application.
-
-## Helpful Information
-
-### Project Setup
-
-`poetry new lab1` will make your life a lot easier
-
-### Running commands from the poetry virtual environment
-
-`poetry` allows you to run scripts directly from it's environment in a controlled fashion. For example I have `conda` installed on my machine and it is the default `python`. When leveraging `poetry` to run `FastAPI` applications I typically do the following for local development:
-
-```{bash}
-poetry run uvicorn main:app --reload
-```
-
-this will run the uvicorn application within the context of the virtual environment created by poetry without having to source the environment.
-
-
 
 ## Grading
 
