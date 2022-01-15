@@ -122,10 +122,10 @@ Build a `FastAPI` with the following:
 .
 └── .gitignore
 └── lab_1
-   └── run.sh
-   └── README.md
-   └── Dockerfile
-   └── lab1
+   ├─── run.sh
+   ├─── README.md
+   └─── lab1
+      ├─── Dockerfile
       ├── README.rst
       ├── lab1
       │   ├── __init__.py
@@ -135,10 +135,10 @@ Build a `FastAPI` with the following:
       └── tests
          ├── __init__.py
          └── test_lab1.py
-└── lab_2
-└── lab_3
-└── lab_4
-└── lab_5
+├── lab_2
+├── lab_3
+├── lab_4
+├── lab_5
 └── project
 ```
 
