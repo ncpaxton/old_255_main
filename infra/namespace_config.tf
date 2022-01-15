@@ -4,13 +4,13 @@ resource "local_file" "foo" {
     apiVersion: v1
     kind: Namespace
     metadata:
-      name: ${lower(replace(split("@", each.key)[0], ".", ""))}
+      name: ${lower(replace(replace(split("@", each.key)[0], ".", ""), "_", "-"))}
     ---
     kind: Role
     apiVersion: rbac.authorization.k8s.io/v1
     metadata:
-      name: ${lower(replace(split("@", each.key)[0], ".", ""))}-full-access
-      namespace: ${lower(replace(split("@", each.key)[0], ".", ""))}
+      name: ${lower(replace(replace(split("@", each.key)[0], ".", ""), "_", "-"))}-full-access
+      namespace: ${lower(replace(replace(split("@", each.key)[0], ".", ""), "_", "-"))}
     rules:
     - apiGroups: ["", "extensions", "apps"]
       resources: ["*"]
@@ -24,22 +24,22 @@ resource "local_file" "foo" {
     kind: RoleBinding
     apiVersion: rbac.authorization.k8s.io/v1
     metadata:
-      name: ${lower(replace(split("@", each.key)[0], ".", ""))}-user-access
-      namespace: ${lower(replace(split("@", each.key)[0], ".", ""))}
+      name: ${lower(replace(replace(split("@", each.key)[0], ".", ""), "_", "-"))}-user-access
+      namespace: ${lower(replace(replace(split("@", each.key)[0], ".", ""), "_", "-"))}
     roleRef:
       apiGroup: rbac.authorization.k8s.io
       kind: Role
-      name: ${lower(replace(split("@", each.key)[0], ".", ""))}-full-access
+      name: ${lower(replace(replace(split("@", each.key)[0], ".", ""), "_", "-"))}-full-access
     subjects:
     - kind: User
-      namespace: ${lower(replace(split("@", each.key)[0], ".", ""))}
+      namespace: ${lower(replace(replace(split("@", each.key)[0], ".", ""), "_", "-"))}
       name: ${lookup(local.email_to_id, each.key)}
     ---
     apiVersion: v1
     kind: ResourceQuota
     metadata:
-      name: resource-quota-${lower(replace(split("@", each.key)[0], ".", ""))}
-      namespace: ${lower(replace(split("@", each.key)[0], ".", ""))}
+      name: resource-quota-${lower(replace(replace(split("@", each.key)[0], ".", ""), "_", "-"))}
+      namespace: ${lower(replace(replace(split("@", each.key)[0], ".", ""), "_", "-"))}
     spec:
       hard:
         requests.cpu: "4"
@@ -47,6 +47,6 @@ resource "local_file" "foo" {
         limits.cpu: "8"
         limits.memory: 16Gi
     EOT
-  filename = "yamls/${lower(replace(split("@", each.key)[0], ".", ""))}.yaml"
+  filename = "yamls/${lower(replace(replace(split("@", each.key)[0], ".", ""), "_", "-"))}.yaml"
 }
 
