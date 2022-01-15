@@ -5,35 +5,43 @@ locals {
     "siduojiang@berkeley.edu"
   ]
   students = [
-    "mkarch@berkeley.edu",
-    "joslateriii@berkeley.edu",
-    "ski@berkeley.edu",
+    "sophiaskowronski@berkeley.edu",
     "abhingare@berkeley.edu",
     "ncpaxton@berkeley.edu",
+    "mkarch@berkeley.edu",
     "stemlock@berkeley.edu",
     "dchacon@berkeley.edu",
-    "john.slater@berkeley.edu",
+    "joslateriii@berkeley.edu",
     "mblake@berkeley.edu",
-    "v.killada@berkeley.edu",
-    "ziff@berkeley.edu",
+    "vasudev.killada@berkeley.edu",
+    "daziff@berkeley.edu",
     "sudhrity@berkeley.edu",
     "jdayer@berkeley.edu",
     "pmotameni@berkeley.edu",
     "ivanwong@berkeley.edu",
     "kklu78@berkeley.edu",
     "danieljryu@berkeley.edu",
-    "yuzeng@berkeley.edu",
+    "eugene.shen.y@berkeley.edu",
     "sunitc@berkeley.edu",
-    "lbrossi@berkeley.edu",
+    "lucas.brossi@berkeley.edu",
     "sweston@berkeley.edu",
-    "Jm.stilb@berkeley.edu",
+    "jm.stilb@berkeley.edu",
     "li.wanyu@berkeley.edu",
-    "heather.pieszala@berkeley.edu"
+    "heather.pieszala@berkeley.edu",
+    "shyu@berkeley.edu",
+    "georgerodriguez@berkeley.edu",
+    "vikram_mukhi@berkeley.edu",
+    "kevinxuan@berkeley.edu",
+    "yaoc16@berkeley.edu",
+    "zwang2020@berkeley.edu",
+    "tals123@berkeley.edu",
+    "kngo@berkeley.edu",
+    "orgoca@berkeley.edu"
   ]
 }
 
 locals {
-    email_to_id = { for user in data.azuread_users.users.users : user.mail => user.object_id if user.mail != "" }
+  email_to_id = { for user in data.azuread_users.users.users : user.mail => user.object_id if user.mail != "" }
 }
 
 
