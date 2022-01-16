@@ -69,7 +69,7 @@ Build a `FastAPI` with the following:
 1. `/hello` endpoint which takes a query parameter `name` for displaying `hello [value]`
    1. Raises a error if query parameter is not `name` and raises an appropriate HTTP status code to the client
    2. Include a comment justifying why you choose the corresponding HTTP status code. [HTTP Status Codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
-2. `/` endpoint which raises a Not Implemented error and sends the appropriate HTTP status code to the client
+2. `/` endpoint which is not implemented. You should raises a HTTP exception and sends the appropriate HTTP status code to the client
 3. `/docs` endpoint is browsable while API is running with corresponding OpenAPI documentation
 4. `/openapi.json` returns a `json` object that meets the OpenAPI specification version `3+`
 5. `Dockerfile` for packaging and running the application
@@ -78,7 +78,7 @@ Build a `FastAPI` with the following:
 ## Additional Requirements
 
 1. Python 3.10
-   - Use native python types instead of `typing` 
+   - Use native python types instead of `typing`
       - use
 
         ```{python}
