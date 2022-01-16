@@ -4,7 +4,7 @@ The goal of Lab 1 is to familiarize students with preparing their environment fo
 
 ## Working Repository
 
-You should have a repo in [GitHub](https://github.com/orgs/UCB-W255/) with a name following the following standard `[TERM][YEAR]-[GITHUB_USERNAME]`. For example: https://github.com/UCB-W255/spring22-jameswinegar. All work for all labs and project should be done in this repository with the following folder structure:
+You should have a repo in [GitHub](https://github.com/orgs/UCB-W255/) with a name following the following standard `[TERM][YEAR]-[GITHUB_USERNAME]`. For example: <https://github.com/UCB-W255/spring22-jameswinegar>. All work for all labs and project should be done in this repository with the following folder structure:
 
 ```{text}
 .
@@ -24,7 +24,7 @@ You do not need to manage pull requests, etc. Instructors and TAs will pull down
 
 Add a `.gitignore` file to the root of your repo with the following:
 
-https://github.com/github/gitignore/blob/main/Python.gitignore
+<https://github.com/github/gitignore/blob/main/Python.gitignore>
 
 ### Project Setup
 
