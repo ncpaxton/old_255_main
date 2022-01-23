@@ -36,7 +36,8 @@ locals {
     "zwang2020@berkeley.edu",
     "tals123@berkeley.edu",
     "kngo@berkeley.edu",
-    "orgoca@berkeley.edu"
+    "orgoca@berkeley.edu",
+    "ameysmahajan@berkeley.edu"
   ]
 }
 

@@ -44,7 +44,8 @@ student_list = [
     # "zwang-MIDS"
     # "tals1",
     # "Ngo-Kevin",
-    # "orgoca"
+    # "orgoca",
+    "amey250695"
 ]
 
 def runner():
