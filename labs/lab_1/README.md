@@ -75,6 +75,8 @@ Build a `FastAPI` with the following:
 5. `Dockerfile` for packaging and running the application
 6. `README.md` for how to build, run, and test code in app root directory (minimal, a few lines is plenty)
 
+Remember that we're using a REST API framework. So we expect the framework to handle some of our concerns. As you review the Objectives and Requirements keep this in mind. Try to keep everything as simple as possible while achieving the goals.
+
 ## Additional Requirements
 
 1. Python 3.10
@@ -115,6 +117,8 @@ Build a `FastAPI` with the following:
          curl -o /dev/null -s -w "%{http_code}\n" -X GET "http://localhost:8000/"
          curl -o /dev/null -s -w "%{http_code}\n" -X GET "http://localhost:8000/docs"
         ```
+
+9. Do not use `poetry run [COMMAND]` for the final `CMD` of your docker container especially when using multi-stage builds where you are isolating your build requirements from your runtime requirements.
 
 ## Expected Final Folder Structure
 
