@@ -1,13 +1,14 @@
 from operator import mod
+from os import getcwd
+from os.path import exists, join
+
+import joblib
 from sklearn.datasets import fetch_california_housing
 from sklearn.impute import SimpleImputer
-from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.model_selection import GridSearchCV, train_test_split
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import RobustScaler
 from sklearn.svm import SVR
-import joblib
-from os.path import exists, join
-from os import getcwd
 
 # Metadata
 data = fetch_california_housing()
