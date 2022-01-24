@@ -1,6 +1,6 @@
 # Lab 2
 
-The goal of Lab 2 is to extend your `FastAPI` application from Lab 1. You will add a `/predict` endpoint with appropriate handling for common error scenerios. You will also add GitHub actions which can test your application on pull requests. You do not need to manage your submission via pull requests. We will need this as a base for Lab 3.
+The goal of `lab_2` is to extend your `FastAPI` application from `lab_1`. You will add a `/predict` endpoint with appropriate handling for common error scenerios. You will also add GitHub actions which can test your application on pull requests. You do not need to manage your submission via pull requests. We will need this as a base for `lab_3`.
 
 ## Helpful Information
 
@@ -72,6 +72,21 @@ requests = "^2.27.1"
 └── .gitignore
 └── lab_1
 ├── lab_2
+   ├── lab2
+   │   ├── Dockerfile
+   │   ├── README.md
+   │   ├── lab2
+   │   │   ├── __init__.py
+   │   │   └── main.py
+   │   ├── model_pipeline.pkl
+   │   ├── poetry.lock
+   │   ├── pyproject.toml
+   │   └── tests
+   │       ├── __init__.py
+   │       └── test_lab2.py
+   ├── run.sh
+   └── trainer
+      └── train.py
 ├── lab_3
 ├── lab_4
 ├── lab_5
