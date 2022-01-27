@@ -63,13 +63,13 @@ Particularly you will need to be or become comfortable with the following:
 - [API Architecture — Best Practices for designing REST APIs](https://link.medium.com/daB4HtnUEmb)
 - [Mozilla - HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
 
-### Week 1
+### Week 1 (Monolith and Microservice Architectures)
 
 - [Decision Points for Microservice vs. Monolith](https://microservices.io/articles/applying.html)
 - [Bounded Context - Martin Fowler](https://martinfowler.com/bliki/BoundedContext.html)
 - [Database per Microservice Pattern](https://microservices.io/patterns/data/database-per-service.html)
 
-### Week 2
+### Week 2 (Continuous Integration and Continuous Deployment)
 
 - [GitHub Actions Review](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions)
 - [Data Drift in Review](https://evidentlyai.com/blog/ml-monitoring-data-drift-how-to-handle)
@@ -77,48 +77,50 @@ Particularly you will need to be or become comfortable with the following:
 - [AWS MLOps](https://docs.aws.amazon.com/solutions/latest/aws-mlops-framework/architecture-overview.html)
 - [Azure MLOps](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/ai/mlops-python)
 
-### Week 3
+### Week 3 (Development and Production Systems)
 
 - [Azure Databricks Analytics Platform](https://docs.microsoft.com/en-us/azure/architecture/solution-ideas/articles/azure-databricks-modern-analytics-architecture)
 - [AWS Databricks Analytics Platform](https://databricks.com/blog/2020/06/12/enterprise-cloud-service-public-preview-on-aws.html)
 - [Data Lake on GCP](https://cloud.google.com/architecture/build-a-data-lake-on-gcp)
 
-### Week 4
+### Week 4 (Machine Learning over an API, Part I)
+
+- [Batch vs Real-Time Processing](https://www.confluent.io/learn/batch-vs-real-time-data-processing/)
+- [Batch is a Special Case of Streaming](https://www.ververica.com/blog/batch-is-a-special-case-of-streaming)
+- []()
+
+### Week 5 (Machine Learning over an API, Part II)
 
 - []()
 
-### Week 5
+### Week 6 (Caching)
 
 - []()
 
-### Week 6
+### Week 7 (State)
 
 - []()
 
-### Week 7
+### Week 8 (Kubernetes, Part I - Kubernetes Introduction, Abstraction, and Deployments)
 
 - []()
 
-### Week 8
+### Week 9 (Kubernetes, Part II - Services, Ingress, and Service Mesh)
 
 - []()
 
-### Week 9
+### Week 10 (Kubernetes, Part II - Monitoring, Security, & Opinionated Frameworks)
 
 - []()
 
-### Week 10
+### Week 11 (Deploy and Instrument a Machine Learning API)
 
 - []()
 
-### Week 11
+### Week 12 (Model Evaluation)
 
 - []()
 
-### Week 12
-
-- []()
-
-### Week 13
+### Week 13 (Security)
 
 - []()
