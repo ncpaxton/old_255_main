@@ -6,13 +6,26 @@ Welcome to W255 Machine Learning Systems Engineering. The goal of this class is 
 
 Grading for this class is meant to be informative. We expect people to work in teams and learn from eachother collective. We also expect students to submit their own work; knowing it won't be without information potentially gained from other students. The instructional team does not care whether you work together with your classmates, we care whether you learn how to create, manage, and communicate about a real production environment with other key stakeholder groups such as IT, Operations, DevOps, Software Engineering, etc.
 
-## Labs
+## Projects & Labs
 
 Labs are under the labs folder
 
-## Project
-
 Project will be provided in week 9
+
+### Due Dates:
+
+- Lab 1
+  - Jan 24
+- Lab 2
+  - Feb 15
+- Lab 3
+  - Mar 14
+- Lab 4
+  - Mar 21
+- Lab 5
+  - April 4
+- Project
+  - April 11
 
 ## Readings
 
