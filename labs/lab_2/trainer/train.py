@@ -40,9 +40,10 @@ params = {
 
 grid = GridSearchCV(processing_pipeline, param_grid=params, n_jobs=-1, cv=5, verbose=3)
 
-model_file = join(getcwd(), "model_pipelink.pkl")
-print(model_file)
-if not exists(model_file):
+model_filename = "model_pipeline.pkl"
+model_path = join(getcwd(), model_filename)
+print(model_path)
+if not exists(model_path):
     grid.fit(X_train, y_train)
 
     print(f"Train R^2 Score : {grid.best_estimator_.score(X_train, y_train):.3f}")
@@ -50,6 +51,6 @@ if not exists(model_file):
     print(f"Best R^2 Score Through Grid Search : {grid.best_score_:.3f}")
     print(f"Best Parameters : {grid.best_params_}")
 
-    joblib.dump(grid.best_estimator_, "model_pipeline.pkl")
+    joblib.dump(grid.best_estimator_, model_path)
 else:
     print("Model has already been trained, no need to rerun")
