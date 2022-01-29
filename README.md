@@ -137,3 +137,11 @@ Particularly you will need to be or become comfortable with the following:
 ### Week 13 (Security)
 
 - []()
+
+
+## Async Notes
+
+Week 3:
+  - Re-record Docker hello world video (commands, layers, multi-stage build)
+Week 5:
+  - 5.2 is incorrect. need to address column ordering into the API. Flask does not have a built-in serialization framework like FastAPI with pydantic. Probably need to use Marshmallow
