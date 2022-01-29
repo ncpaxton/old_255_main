@@ -146,6 +146,10 @@ Remember that we're using a REST API framework. So we expect the framework to ha
 └── project
 ```
 
+## Submission
+
+All code will be graded off your repo's `main` branch. No additional forms or submission processes are needed.
+
 ## Grading
 
 Grades will be given based on the following:

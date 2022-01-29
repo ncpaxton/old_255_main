@@ -93,6 +93,10 @@ requests = "^2.27.1"
 └── project
 ```
 
+## Submission
+
+All code will be graded off your repo's `main` branch. No additional forms or submission processes are needed.
+
 ## Grading
 
 Grades will be given based on the following:
