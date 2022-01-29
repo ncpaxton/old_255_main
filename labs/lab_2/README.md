@@ -43,13 +43,23 @@ Remember that we're using a REST API framework. So we expect the framework to ha
 ## Additional Requirements
 
 1. All requirements of Lab 1
-2. `run.sh`
+2. Use `python:3.10-slim-buster` for the build and application image, and the following for build dependencies. This ensures that you're not building scipy, numpy, and scikit-learn from source (saves time for you)
+
+```{Dockerfile}
+RUN apt-get update && apt-get install -y \
+  curl \
+  build-essential \
+  libffi-dev \
+  && rm -rf /var/lib/apt/lists/*
+```
+
+3. `run.sh`
    1. Trains model
    2. Moves model artifacts to api source directory
    3. Builds Docker application
    4. Run Docker application in detached mode
    5. Several curl commands to validate API responds appropraitely
-3. include the following for your `pyproject.toml`. This is to ensure training version matches the solution. Note `scipy = "^1.7"` and `scikit-learn = "^1.0"` are required even though we're only predicting in our API without any training.
+4. include the following for your `pyproject.toml`. This is to ensure training version matches the solution. Note `scipy = "^1.7"` and `scikit-learn = "^1.0"` are required even though we're only predicting in our API without any training.
 
 ```{toml}
 [tool.poetry.dependencies]
