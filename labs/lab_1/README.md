@@ -28,7 +28,7 @@ Add a `.gitignore` file to the root of your repo with the following:
 
 ### Project Setup
 
-`poetry new lab1` will make your life a lot easier
+`poetry new lab1 --name src` will make your life a lot easier. `src` is short for source.
 
 This will change your folder structure to the following:
 
@@ -37,14 +37,14 @@ This will change your folder structure to the following:
 └── lab_1
    └── lab1
       ├── README.rst
-      ├── lab1
-      │   ├── __init__.py
-      │   └── main.py
       ├── poetry.lock
       ├── pyproject.toml
+      ├── src
+      │   ├── __init__.py
+      │   └── main.py
       └── tests
          ├── __init__.py
-         └── test_lab1.py
+         └── test_src.py
 └── lab_2
 └── lab_3
 └── lab_4
