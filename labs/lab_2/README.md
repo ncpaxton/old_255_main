@@ -24,7 +24,7 @@ Build a `FastAPI` with the following:
    9. Since you are sending data to `/predict` it will not be a `GET` and instead will be `POST`. You will need to write a `curl` or `requests` command to hit it effectively and send data. It might benefit you to write your tests first prior to actually hitting your `/predict` endpoint.
 2. Keep all endpoints from `lab_1`
 3. `.github/workflows/tests.yml`
-   1. Performn actions on pull_request
+   1. Perform actions on pull_request
    2. Use ubuntu-latest and python3.10
    3. Steps
          1. Checkout code
