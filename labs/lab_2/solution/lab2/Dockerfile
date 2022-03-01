@@ -24,9 +24,7 @@ COPY pyproject.toml poetry.lock ./
 
 # Copy over the venv including any symbolic links, do not install development/testing libraries when install poetry dependencies
 RUN python -m venv --copies ${APP_DIR}/venv
-#RUN . ${APP_DIR}/venv/bin/activate && poetry install --no-dev
-COPY requirements.txt requirements.txt
-RUN . ${APP_DIR}/venv/bin/activate && pip install -r requirements.txt
+RUN . ${APP_DIR}/venv/bin/activate && poetry install --no-dev
 
 #############
 # Deployment image
