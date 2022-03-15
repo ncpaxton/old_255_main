@@ -1,0 +1,9 @@
+namespace: winegarj
+bases:
+- ../../bases
+resources: 
+  - virtual-service.yaml
+patches:
+- path: patch-deployment-lab4.yaml
+  target:
+    kind: Deployment

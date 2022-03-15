@@ -95,7 +95,7 @@ releases:
     chart: itscontained/raw
     version: 0.2.5
     needs: 
-      - cert-manager/cert-manager
+      - cert-manager/cert-manager-azure-sp-secret
     values:
       - resources:
           - apiVersion: cert-manager.io/v1
