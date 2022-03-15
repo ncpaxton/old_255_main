@@ -1,5 +1,5 @@
 resource "local_file" "foo" {
-  for_each = toset(local.students)
+  for_each = toset(concat(local.instructors, local.students))
   content  = <<-EOT
     apiVersion: v1
     kind: Namespace
@@ -36,18 +36,6 @@ resource "local_file" "foo" {
     - kind: User
       namespace: ${lower(replace(replace(split("@", each.key)[0], ".", ""), "_", "-"))}
       name: ${lookup(local.email_to_id, each.key)}
-    # ---
-    # apiVersion: v1
-    # kind: ResourceQuota
-    # metadata:
-    #   name: resource-quota-${lower(replace(replace(split("@", each.key)[0], ".", ""), "_", "-"))}
-    #   namespace: ${lower(replace(replace(split("@", each.key)[0], ".", ""), "_", "-"))}
-    # spec:
-    #   hard:
-    #     requests.cpu: "4"
-    #     requests.memory: 8Gi
-    #     limits.cpu: "8"
-    #     limits.memory: 16Gi
     ---
     kind: Role
     apiVersion: rbac.authorization.k8s.io/v1
@@ -73,6 +61,46 @@ resource "local_file" "foo" {
       namespace: ${lower(replace(replace(split("@", each.key)[0], ".", ""), "_", "-"))}-istio-access
       name: ${lookup(local.email_to_id, each.key)}
     ---
+    kind: Certificate
+    apiVersion: cert-manager.io/v1
+    metadata:
+      name: ${lower(replace(replace(split("@", each.key)[0], ".", ""), "_", "-"))}-cert
+      namespace: istio-ingress
+    spec:
+      secretName: ${lower(replace(replace(split("@", each.key)[0], ".", ""), "_", "-"))}-cert
+      commonName: ${lower(replace(replace(split("@", each.key)[0], ".", ""), "_", "-"))}.mids-w255.com
+      dnsNames:
+      - ${lower(replace(replace(split("@", each.key)[0], ".", ""), "_", "-"))}.mids-w255.com
+      issuerRef: 
+        name: letsencrypt-prod
+        kind: ClusterIssuer
+    ---
+    kind: Gateway
+    apiVersion: networking.istio.io/v1beta1
+    metadata:
+      name: ${lower(replace(replace(split("@", each.key)[0], ".", ""), "_", "-"))}-gateway
+      namespace: istio-ingress
+    spec:
+      selector:
+        istio: ingress
+      servers:
+      - port:
+          number: 443
+          name: https
+          protocol: HTTPS
+        tls:
+          mode: SIMPLE
+          credentialName: istio-ingress/${lower(replace(replace(split("@", each.key)[0], ".", ""), "_", "-"))}-cert
+        hosts:
+        - ${lower(replace(replace(split("@", each.key)[0], ".", ""), "_", "-"))}.mids-w255.com
+      - port:
+          number: 80
+          name: http
+          protocol: HTTP
+        hosts:
+        - ${lower(replace(replace(split("@", each.key)[0], ".", ""), "_", "-"))}.mids-w255.com
+        tls:
+          httpsRedirect: true
     EOT
   filename = "yamls/${lower(replace(replace(split("@", each.key)[0], ".", ""), "_", "-"))}.yaml"
 }
