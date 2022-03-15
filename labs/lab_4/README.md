@@ -53,9 +53,34 @@ Copy your code from lab 3 into a new lab folder `lab_4`. You will use the same m
 
 ### Useful commands
 
+Hitting `/predict` API endpoint
+
 ```{bash}
 NAMESPACE=winegarj
 curl -X 'GET' 'https://${NAMESPACE}.mids-w255.com/predict' -L -H 'Content-Type: application/json' -d '{"houses": [{ "MedInc": 8.3252, "HouseAge": 42, "AveRooms": 6.98, "AveBedrms": 1.02, "Population": 322, "AveOccup": 2.55, "Latitude": 37.88, "Longitude": -122.23 }]}'
+```
+
+Using non-`latest` tags for production deployment
+
+```{bash}
+TAG=$(some way to generate random strings)
+sed "s/\[TAG\]/${TAG}/g" .k8s/overlays/prod/patch-deployment-lab4_copy.yaml > .k8s/overlays/prod/patch-deployment-lab4.yaml
+```
+
+Generate and apply kustomize files
+
+```{bash}
+kubectl kustomize .k8s/overlays/dev
+kubectl apply -k .k8s/overlays/dev
+```
+
+Various `Istio`/`Cert-Manager`/`External-DNS` lookups
+
+```{bash}
+kubectl --namespace externaldns logs -l "app.kubernetes.io/name=external-dns,app.kubernetes.io/instance=external-dns"
+kubectl --namespace istio-ingress get certificates ${NAMESPACE}-cert
+kubectl --namespace istio-ingress get certificaterequests
+kubectl --namespace istio-ingress get gateways ${NAMESPACE}-gateway 
 ```
 
 ## Requirements
@@ -63,6 +88,7 @@ curl -X 'GET' 'https://${NAMESPACE}.mids-w255.com/predict' -L -H 'Content-Type: 
 1. Create a `.k8s` directory in your `lab_4` folder
    - Create subdirectories for `bases`, `dev`, `prod`
    - Copy the available stubs in this directory
+   - Modify to work within your namespace
 2. Push your image to a namespaced location in ACR
    - Example: `w255mids.azurecr.io/winegarj/lab4:latest`
 3. Modify the stubs to allow for local development
@@ -108,10 +134,24 @@ docker pull ${IMAGE_FQDN}
 ├── lab_3
 ├── lab_4
 |   ├── lab4
-|   |   ├── .k8s
-|   │   |   ├── bases
-|   │   |   ├── dev
-|   │   |   └── prod
+│   │   ├── .k8s
+│   │   │   ├── bases
+│   │   │   │   ├── config-map.yaml
+│   │   │   │   ├── deployment-lab4.yaml
+│   │   │   │   ├── deployment-redis.yaml
+│   │   │   │   ├── kustomization.yaml
+│   │   │   │   ├── persistent-volume.yaml
+│   │   │   │   ├── service-lab4.yaml
+│   │   │   │   └── service-redis.yaml
+│   │   │   └── overlays
+│   │   │       ├── dev
+│   │   │       │   ├── kustomization.yaml
+│   │   │       │   └── patch-lab4.yaml
+│   │   │       └── prod
+│   │   │           ├── kustomization.yaml
+│   │   │           ├── patch-deployment-lab4.yaml
+│   │   │           ├── patch-deployment-lab4_copy.yaml
+│   │   │           └── virtual-service.yaml
 |   │   ├── Dockerfile
 |   │   ├── README.md
 |   │   ├── lab4
@@ -161,4 +201,4 @@ Grades will be given based on the following:
 
 ## Time Expectations
 
-This lab will take approximately ~10-20 hours. Most of the time will be spent configuring skaffold and kustomize.
+This lab will take approximately ~10-20 hours. Most of the time will be spent configuring kustomize and reviewing the istio processes.
