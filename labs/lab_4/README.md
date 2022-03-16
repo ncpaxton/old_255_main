@@ -25,7 +25,9 @@ Copy your code from lab 3 into a new lab folder `lab_4`. You will use the same m
 
 - Install Azure CLI, `az` (<https://docs.microsoft.com/en-us/cli/azure/install-azure-cli>)
 - Authenticate to Azure with your `@berkeley.edu` email
-  - `az login`
+  - `az login --tenant berkeleydatasciw255.onmicrosoft.com`
+- Set Subscription to the one for the class
+  - `az account set --subscription="414b4da1-b6dd-480a-a797-cb14ea566766"`
 - Authenticate to the `AKS` cluster
   - `az aks get-credentials --name w255-aks --resource-group w255 --overwrite-existing`
 - Change your kubernetes context between the `AKS` cluster and `minikube`
