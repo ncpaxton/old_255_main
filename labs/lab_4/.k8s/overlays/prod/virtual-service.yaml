@@ -13,6 +13,10 @@ spec:
         exact: /predict
     - uri:
         prefix: /health
+    - uri:
+        prefix: /docs
+    - uri:
+        prefix: /openapi.json
     route:
     - destination:
         host: lab4

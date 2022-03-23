@@ -1,3 +1,7 @@
 namespace: winegarj
 bases:
-- ../../base
+- ../../bases
+patches:
+- path: patch-deployment-lab4.yaml
+  target:
+    kind: Deployment
