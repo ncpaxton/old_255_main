@@ -9,8 +9,8 @@ resource "azurerm_kubernetes_cluster" "k8s" {
 
   default_node_pool {
     name                = "default"
-    min_count           = 3
-    max_count           = 10
+    min_count           = 1
+    max_count           = 1
     vm_size             = "Standard_D4_v5"
     enable_auto_scaling = true
     # os_disk_type        = "Ephemeral"

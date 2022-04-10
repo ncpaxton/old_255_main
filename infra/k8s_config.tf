@@ -14,7 +14,7 @@ resource "local_file" "foo" {
       name: ${lower(replace(replace(split("@", each.key)[0], ".", ""), "_", "-"))}-full-access
       namespace: ${lower(replace(replace(split("@", each.key)[0], ".", ""), "_", "-"))}
     rules:
-    - apiGroups: ["", "extensions", "apps", "networking.istio.io"]
+    - apiGroups: ["", "extensions", "apps", "networking.istio.io", "autoscaling"]
       resources: ["*"]
       verbs: ["*"]
     - apiGroups: ["batch"]
@@ -40,8 +40,8 @@ resource "local_file" "foo" {
     kind: Role
     apiVersion: rbac.authorization.k8s.io/v1
     metadata:
-      name: ${lower(replace(replace(split("@", each.key)[0], ".", ""), "_", "-"))}-istio-access
-      namespace: istio-system
+      name: ${lower(replace(replace(split("@", each.key)[0], ".", ""), "_", "-"))}-prometheus
+      namespace: prometheus
     rules:
     - apiGroups: [""]
       resources: ["pods/portforward"]
@@ -50,15 +50,15 @@ resource "local_file" "foo" {
     kind: RoleBinding
     apiVersion: rbac.authorization.k8s.io/v1
     metadata:
-      name: ${lower(replace(replace(split("@", each.key)[0], ".", ""), "_", "-"))}-istio-access
-      namespace: istio-system
+      name: ${lower(replace(replace(split("@", each.key)[0], ".", ""), "_", "-"))}-prometheus
+      namespace: prometheus
     roleRef:
       apiGroup: rbac.authorization.k8s.io
       kind: Role
-      name: ${lower(replace(replace(split("@", each.key)[0], ".", ""), "_", "-"))}-istio-access
+      name: ${lower(replace(replace(split("@", each.key)[0], ".", ""), "_", "-"))}-prometheus
     subjects:
     - kind: User
-      namespace: ${lower(replace(replace(split("@", each.key)[0], ".", ""), "_", "-"))}-istio-access
+      namespace: ${lower(replace(replace(split("@", each.key)[0], ".", ""), "_", "-"))}-prometheus
       name: ${lookup(local.email_to_id, each.key)}
     ---
     kind: Certificate

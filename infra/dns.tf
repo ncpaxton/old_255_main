@@ -8,7 +8,6 @@ resource "azuread_application" "dns_sp" {
   display_name               = "DNSManagerSP"
 }
 
-
 resource "azuread_service_principal" "dns_sp" {
     application_id = azuread_application.dns_sp.application_id
 }

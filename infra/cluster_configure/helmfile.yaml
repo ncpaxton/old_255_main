@@ -7,8 +7,13 @@ repositories:
     url: https://charts.jetstack.io
   - name: itscontained
     url: https://charts.itscontained.io
+  - name: prometheus-community
+    url: https://prometheus-community.github.io/helm-charts
 
 releases:
+  ##############
+  # External DNS
+  ##############
   - name: external-dns
     namespace: externaldns
     chart: bitnami/external-dns
@@ -30,6 +35,9 @@ releases:
           - istio-gateway
         logLevel: {{ env "EXTERNALDNS_LOG_LEVEL" | default "debug" }}
 
+  ##############
+  # Istio
+  ##############
   - name: istio-base
     namespace: istio-system
     chart: istio/base
@@ -49,7 +57,7 @@ releases:
     needs:
       - istio-system/istiod
 
-  - name: isito-strict-peer-auth
+  - name: istio-strict-peer-auth
     namespace: istio-system
     chart: itscontained/raw
     version: 0.2.5
@@ -65,6 +73,9 @@ releases:
               mtls:
                 mode: STRICT
 
+  ##############
+  # Cert Manager
+  ##############
   - name: cert-manager
     namespace: cert-manager
     chart: jetstack/cert-manager
@@ -107,7 +118,7 @@ releases:
                 server: https://acme-staging-v02.api.letsencrypt.org/directory
                 email: {{ requiredEnv "ACME_ISSUER_EMAIL" }}
                 privateKeySecretRef:
-                  name: letsencrypt-prod
+                  name: letsencrypt-staging
                 solvers:
                   - dns01:
                       azureDNS:
@@ -143,3 +154,41 @@ releases:
                         resourceGroupName: {{ requiredEnv "AZ_RESOURCE_GROUP" }}
                         hostedZoneName: {{ requiredEnv "DOMAIN_NAME" }}
                         environment: AzurePublicCloud
+
+  ##############
+  # Mimic Minikube Storage on AKS
+  ##############
+  - name: standard-storage
+    chart: itscontained/raw
+    version: 0.2.5
+    values:
+      - resources:
+        - apiVersion: storage.k8s.io/v1
+          allowVolumeExpansion: true
+          kind: StorageClass
+          metadata:
+            labels:
+              addonmanager.kubernetes.io/mode: EnsureExists
+              kubernetes.io/cluster-service: "true"
+            name: standard
+          parameters:
+            skuname: StandardSSD_LRS
+          provisioner: disk.csi.azure.com
+          reclaimPolicy: Delete
+          volumeBindingMode: WaitForFirstConsumer
+
+  ##############
+  # Prometheus
+  ##############
+  - name: prometheus
+    namespace: prometheus
+    chart: prometheus-community/kube-prometheus-stack
+    version: 34.2.0
+
+  ##############
+  # Grafana
+  ##############
+
+  ##############
+  # Kiali
+  ##############
